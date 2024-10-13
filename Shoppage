@@ -1,0 +1,609 @@
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
+
+import 'shoppage_model.dart';
+export 'shoppage_model.dart';
+
+class ShoppageWidget extends StatefulWidget {
+  /// after click on shop page
+  const ShoppageWidget({super.key});
+
+  @override
+  State<ShoppageWidget> createState() => _ShoppageWidgetState();
+}
+
+class _ShoppageWidgetState extends State<ShoppageWidget>
+    with TickerProviderStateMixin {
+  late ShoppageModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ShoppageModel());
+
+    animationsMap.addAll({
+      'iconOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShakeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1510.0.ms,
+            hz: 3,
+            offset: Offset(0.0, 0.0),
+            rotation: 0.262,
+          ),
+        ],
+      ),
+    });
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFF2F582F),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF3F754E),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () async {
+            context.pop();
+          },
+        ),
+        title: Text(
+          'SHOP',
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
+                fontFamily: 'Inter Tight',
+                color: Colors.white,
+                fontSize: 30,
+                letterSpacing: 0.0,
+              ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        top: true,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0xFFB5D5BE),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 3,
+                      color: Color(0x39000000),
+                      offset: Offset(
+                        0.0,
+                        1,
+                      ),
+                    )
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(12, 16, 12, 24),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                            child: Text(
+                              '1355',
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Inter Tight',
+                                    fontSize: 20,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                          FaIcon(
+                            FontAwesomeIcons.coins,
+                            color: Color(0xFFC6AE13),
+                            size: 24,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.water_drop,
+                            color: Color(0xFF2D719E),
+                            size: 40,
+                          ).animateOnPageLoad(
+                              animationsMap['iconOnPageLoadAnimation']!),
+                          Text(
+                            'Suggested',
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        final _colorPickedColor = await showFFColorPicker(
+                          context,
+                          currentColor: _model.colorPicked ??=
+                              FlutterFlowTheme.of(context).primary,
+                          showRecentColors: true,
+                          allowOpacity: true,
+                          textColor: FlutterFlowTheme.of(context).primaryText,
+                          secondaryTextColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
+                          primaryButtonBackgroundColor:
+                              FlutterFlowTheme.of(context).primary,
+                          primaryButtonTextColor: Colors.white,
+                          primaryButtonBorderColor: Colors.transparent,
+                          displayAsBottomSheet: isMobileWidth(context),
+                        );
+
+                        if (_colorPickedColor != null) {
+                          safeSetState(
+                              () => _model.colorPicked = _colorPickedColor);
+                        }
+                      },
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 0.96,
+                        decoration: BoxDecoration(
+                          color: Color(0x83B3F9B3),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x33000000),
+                              offset: Offset(
+                                0.0,
+                                2,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(2),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 12, 16, 0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('CheckoutWater');
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            GradientText(
+                                              'Water',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Oswald',
+                                                        fontSize: 33,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              colors: [],
+                                              gradientDirection:
+                                                  GradientDirection.ltr,
+                                              gradientType: GradientType.linear,
+                                            ),
+                                            Text(
+                                              '+20% hydration',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 17,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              '1000 coins\n',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0, -1),
+                                          child: Container(
+                                            width: 60,
+                                            height: 60,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.asset(
+                                              'assets/images/water.jpg',
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment(0, 1),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.96,
+                      decoration: BoxDecoration(
+                        color: Color(0x83B3F9B3),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2,
+                            ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(2),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 12, 16, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Sunlight',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge
+                                              .override(
+                                                fontFamily: 'Oswald',
+                                                fontSize: 33,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Photosynthesis +1 level',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                fontSize: 17,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          '1300 coins\n',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 60,
+                                      height: 60,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.asset(
+                                        'assets/images/sun.jpg',
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 0.96,
+                  decoration: BoxDecoration(
+                    color: Color(0x83B3F9B3),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(
+                          0.0,
+                          2,
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(2),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Fertilizer',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Oswald',
+                                            fontSize: 33,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      'Fertilization +1 level',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            fontSize: 17,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      '1300 coins\n',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/dirt.jpg',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 0.96,
+                  decoration: BoxDecoration(
+                    color: Color(0x83B3F9B3),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(
+                          0.0,
+                          2,
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(2),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Steps x2',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Oswald',
+                                            fontSize: 33,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      'Duplicate steps for 1 hour',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            fontSize: 17,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      '1500 coins\n',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/2x.jpg',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'assets/images/plantfloor.png',
+                  width: 5000,
+                  height: 70,
+                  fit: BoxFit.contain,
+                  alignment: Alignment(0, -1),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
