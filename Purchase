@@ -1,0 +1,424 @@
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'purchasecomplete_model.dart';
+export 'purchasecomplete_model.dart';
+
+class PurchasecompleteWidget extends StatefulWidget {
+  const PurchasecompleteWidget({super.key});
+
+  @override
+  State<PurchasecompleteWidget> createState() => _PurchasecompleteWidgetState();
+}
+
+class _PurchasecompleteWidgetState extends State<PurchasecompleteWidget>
+    with TickerProviderStateMixin {
+  late PurchasecompleteModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => PurchasecompleteModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1210.0.ms,
+            begin: Offset(-1.0, -1.0),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShakeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1430.0.ms,
+            hz: 5,
+            offset: Offset(0.0, 0.0),
+            rotation: 0.087,
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1440.0.ms,
+            color: Color(0x800AFB67),
+            angle: 0.524,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 880.0.ms,
+            duration: 1740.0.ms,
+            begin: Offset(-56.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Color(0xFF8CB085),
+        appBar: AppBar(
+          backgroundColor: Color(0xFF3F754E),
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFFFEFEFE),
+              size: 30,
+            ),
+            onPressed: () async {
+              context.pushNamed('HomePage2');
+            },
+          ),
+          title: Text(
+            'Purchase Complete',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Inter Tight',
+                  color: Colors.white,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, -1),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 12),
+                    child: Container(
+                      width: double.infinity,
+                      constraints: BoxConstraints(
+                        maxWidth: 770,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFCCE9C7),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0,
+                              1,
+                            ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).alternate,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 12),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0, -1),
+                              child: Container(
+                                width: 120,
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).accent2,
+                                    width: 4,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Container(
+                                    width: 140,
+                                    height: 140,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent2,
+                                        width: 4,
+                                      ),
+                                    ),
+                                    child: Icon(
+                                      Icons.check_rounded,
+                                      color: FlutterFlowTheme.of(context).info,
+                                      size: 64,
+                                    ),
+                                  ),
+                                ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation1']!),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0, -1),
+                              child: Text(
+                                'Success!',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ).animateOnPageLoad(
+                                  animationsMap['textOnPageLoadAnimation1']!),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0, -1),
+                              child: Text(
+                                '+20% Water',
+                                style: FlutterFlowTheme.of(context)
+                                    .displayMedium
+                                    .override(
+                                      fontFamily: 'Inter Tight',
+                                      color: Color(0xFF264C26),
+                                      letterSpacing: 0.0,
+                                    ),
+                              ).animateOnPageLoad(
+                                  animationsMap['textOnPageLoadAnimation2']!),
+                            ),
+                            Divider(
+                              height: 16,
+                              thickness: 2,
+                              color: Color(0xFF3C5D2F),
+                            ),
+                            RichText(
+                              textScaler: MediaQuery.of(context).textScaler,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Date: ',
+                                    style: TextStyle(),
+                                  ),
+                                  TextSpan(
+                                    text: 'October 13th, 2024',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
+                                  )
+                                ],
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                            RichText(
+                              textScaler: MediaQuery.of(context).textScaler,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Coins Remaining: ',
+                                    style: TextStyle(),
+                                  ),
+                                  TextSpan(
+                                    text: '355',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
+                                  )
+                                ],
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                'assets/images/houseplant-collection-illustration.png',
+                                width: 325,
+                                height: 200,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            Divider(
+                              height: 16,
+                              thickness: 2,
+                              color: Color(0xFF3C5D2F),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Health Updated',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Golden Pothos',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Inter Tight',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(12),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '58%',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily: 'Inter Tight',
+                                                color: Color(0xFFA41212),
+                                                fontSize: 24,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Stack(
+                                          alignment: AlignmentDirectional(0, 0),
+                                          children: [
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: Container(
+                                                width: 120,
+                                                height: 4,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFF243A2A),
+                                                  borderRadius:
+                                                      BorderRadius.circular(2),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 44,
+                                              height: 44,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFF83BC83),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: Icon(
+                                                Icons
+                                                    .keyboard_double_arrow_right_rounded,
+                                                color: Color(0xFF3A611F),
+                                                size: 32,
+                                              ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'containerOnPageLoadAnimation2']!),
+                                          ],
+                                        ),
+                                        Text(
+                                          '78%',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily: 'Inter Tight',
+                                                color: Color(0xFF098A09),
+                                                fontSize: 24,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(width: 16)),
+                                    ),
+                                  ),
+                                ]
+                                    .divide(SizedBox(height: 4))
+                                    .addToEnd(SizedBox(height: 12)),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 8)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ].addToEnd(SizedBox(height: 44)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
